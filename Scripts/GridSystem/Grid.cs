@@ -122,7 +122,7 @@ public class Grid<TGridObject>
         if(x >= 0 && z >= 0 && x < width && z < height)
         {
             gridArray[x, z] = value;
-            debugText[x, z].text = gridArray[x, z].ToString();
+            debugText[x, z].GetComponent<TextMesh>().text = gridArray[x, z].ToString();
         }
     }
 
@@ -179,7 +179,8 @@ public class Grid<TGridObject>
         {
             for(int z = 0; z < height; z++)
             {
-                debugText[x, z] = ErosText.CreateTextMesh(TextType.STATIC, x + ", " + z, null, Mathf.RoundToInt(20 * cellSize), TextAnchor.MiddleCenter, TextAlignment.Center, Color.white, GetWorldPosition(x + cellSize * .5f, z + cellSize * .5f));
+                Vector3 pos = GetWorldPosition(x, z);
+                debugText[x, z] = ErosText.CreateTextMesh(TextType.STATIC, x + ", " + z, null, Mathf.RoundToInt(20 * cellSize), TextAnchor.MiddleCenter, TextAlignment.Center, Color.white, GetWorldPosition(x + .5f, z + .5f));
             }
         }
 
@@ -211,5 +212,9 @@ public class Grid<TGridObject>
         {
             gridLinesZ[z].GetComponent<LineRenderer>().positionCount = 0;
         }
+
+        gridLinesX[width].GetComponent<LineRenderer>().positionCount = 0;
+
+        gridLinesZ[height].GetComponent<LineRenderer>().positionCount = 0;
     }
 }

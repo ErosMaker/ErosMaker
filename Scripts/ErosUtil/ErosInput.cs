@@ -48,7 +48,7 @@ namespace ErosUtils
 
             else
             {
-                return Vector3.zero;
+                return new Vector3(-1, -1, -1);
             }
         }
 

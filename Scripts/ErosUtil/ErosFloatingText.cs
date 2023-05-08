@@ -44,7 +44,7 @@ public class ErosFloatingText : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     public void SetText(string text)
     {
         textMesh.text = text;
